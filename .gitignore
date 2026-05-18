@@ -1,0 +1,21 @@
+# Custom Environment and Secrets
+.env
+
+# Testing libraries
+test.py
+
+# Python Cache and Compilation Files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.cache/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+
+# Data and Documents (To prevent uploading massive or private PDFs)
+*.pdf
