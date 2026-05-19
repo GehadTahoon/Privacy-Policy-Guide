@@ -55,7 +55,7 @@ Below is the visual breakdown of how the pipeline satisfies each architectural p
 * **Test Case:** *"Does WhatsApp allow third-party banner ads, and what are their future plans regarding ads?"*
 * **Observation:** The retriever precisely located the specific clause regarding monetization and advertisements (Page 8), allowing the LLM to provide a highly granular and contextual response.
 
-![Context Relevance](images/context_relevance.png)
+![Context Relevance](Images/context_relevance.png)
 
 ---
 
@@ -64,7 +64,7 @@ Below is the visual breakdown of how the pipeline satisfies each architectural p
 * **Test Case:** *"What is the capital of France?"*
 * **Observation:** Rather than responding with its pre-trained global data, the LLM strictly adhered to the system instructions and safely declared that the information was missing from the uploaded context.
 
-![Groundedness](images/groundedness.png)
+![Groundedness](Images/groundedness.png)
 
 ---
 
@@ -74,7 +74,7 @@ Below is the visual breakdown of how the pipeline satisfies each architectural p
     * *User (Turn 2):* *"And if I use the actual in-app feature instead, what specific items will be deleted?"*
 * **Observation:** The system perfectly linked the pronoun *"instead"* to the historical context of Turn 1, utilized the chat history state, and structured the comparative response beautifully in clear bullet points.
 
-![Answer Relevance](images/answer_relevance.png)
+![Answer Relevance](Images/answer_relevance.png)
 
 ---
 
