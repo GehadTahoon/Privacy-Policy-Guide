@@ -19,3 +19,10 @@ env/
 
 # Data and Documents (To prevent uploading massive or private PDFs)
 *.pdf
+
+# Images
+Images/*
+!Images/context_relevance.png
+!Images/groundedness.png
+!Images/answer_relevance.png
+!Images/example.png

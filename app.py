@@ -95,12 +95,13 @@ def show_chat_interface(method):
 
     # Handle active user input inside the safe context window
     if prompt := st.chat_input("Ask me anything about the privacy policy..."):
+        # 1. Append user prompt to state and render it instantly
         st.session_state.chat_histories[method].append({"role": "user", "content": prompt})
         with chat_container.chat_message("user"):
             st.markdown(prompt)
 
-        # Generate response from RAG Chain orchestrator
-        with st.chat_message("assistant"):
+        # 2. Generate response from RAG Chain orchestrator
+        with chat_container.chat_message("assistant"):
             with st.spinner("Thinking..."):
                 try:
                     answer = generate_rag_response(
@@ -112,7 +113,10 @@ def show_chat_interface(method):
                     answer = f"⚠️ An error occurred: {str(e)}"
 
                 st.markdown(answer)
-                st.session_state.chat_histories[method].append({"role": "assistant", "content": answer})
+                
+        # 3. Append assistant answer to state and rerun the fragment to push input box to the bottom
+        st.session_state.chat_histories[method].append({"role": "assistant", "content": answer})
+        st.rerun()
 
 # Run the isolated chat UI
 show_chat_interface(active_key)

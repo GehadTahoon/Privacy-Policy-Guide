@@ -44,6 +44,41 @@ The application is engineered around a modular RAG pipeline divided into three m
 
 ---
 
+## 📊 Evaluation & Quality Assurance (The RAG Triad)
+
+To ensure the reliability, accuracy, and safety of this RAG application, the system was thoroughly evaluated against the **RAG Triad** framework using specialized test cases derived from the WhatsApp Privacy Policy document. 
+
+Below is the visual breakdown of how the pipeline satisfies each architectural pillar:
+
+### 1. Context Relevance (High-Quality Retrieval)
+* **Objective:** Verifies if the Vector Store extracts the exact technical or policy details from the database based on the user query without bringing irrelevant text.
+* **Test Case:** *"Does WhatsApp allow third-party banner ads, and what are their future plans regarding ads?"*
+* **Observation:** The retriever precisely located the specific clause regarding monetization and advertisements (Page 8), allowing the LLM to provide a highly granular and contextual response.
+
+![Context Relevance](images/context_relevance.png)
+
+---
+
+### 2. Groundedness & Anti-Hallucination Guardrails
+* **Objective:** Ensures the system remains 100% faithful to the provided document and strictly refuses to "hallucinate" or invent facts from its general knowledge if the answer is missing.
+* **Test Case:** *"What is the capital of France?"*
+* **Observation:** Rather than responding with its pre-trained global data, the LLM strictly adhered to the system instructions and safely declared that the information was missing from the uploaded context.
+
+![Groundedness](images/groundedness.png)
+
+---
+
+### 3. Answer Relevance & Chat Memory Continuity
+* **Objective:** Measures whether the generated answers directly address the user's intent, and evaluates the system's multi-turn conversational memory using ambiguous pronouns.
+* **Test Case:** * *User (Turn 1):* *"If I just delete the WhatsApp app from my phone... what happens to my data?"*
+    * *User (Turn 2):* *"And if I use the actual in-app feature instead, what specific items will be deleted?"*
+* **Observation:** The system perfectly linked the pronoun *"instead"* to the historical context of Turn 1, utilized the chat history state, and structured the comparative response beautifully in clear bullet points.
+
+![Answer Relevance](images/answer_relevance.png)
+
+---
+
+
 ## 📦 Installation & Local Setup
 
 1. **Clone the Repository:**
